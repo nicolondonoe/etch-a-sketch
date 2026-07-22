@@ -7,3 +7,5 @@ for (let i = 0; i < 256; i++) {
 }
 
 gridSquares.forEach((square) => container.appendChild(square));
+
+gridSquares.forEach((square) => square.addEventListener("mouseenter", () => square.style.backgroundColor = "blue"));
