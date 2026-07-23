@@ -2,6 +2,10 @@ const container = document.querySelector("div.container");
 let gridSquares = [];
 let sizeButton = document.querySelector("button");
 let size = 16;
+let containerSize = container.offsetWidth;
+
+
+
 
 
 function getSize() {
@@ -27,8 +31,8 @@ function createSquares() {
 
   gridSquares.forEach((square) => {
     container.appendChild(square);
-    square.style.minWidth = (1000/size) + 'px';
-    square.style.minHeight = (1000/size) + 'px';
+    square.style.minWidth = (containerSize/size) + 'px';
+    square.style.minHeight = (containerSize/size) + 'px';
   });
 
   gridSquares.forEach((square) => square.addEventListener("mouseenter", () => {
