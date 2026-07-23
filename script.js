@@ -13,6 +13,19 @@ function getSize() {
   createSquares();
 }
 
+function randomColor() {
+  let rgbArray = [];
+
+  for (let i = 0; i < 3; i++) {
+    rgbArray[i] = Math.floor(Math.random()*255) + 1;
+  }
+
+  // console.log(rgbArray);
+
+  return "rgb("+rgbArray[0]+","+rgbArray[1]+","+rgbArray[2]+")";
+
+}
+
 function createSquares() {
 
   // remove the previous squares for resizing
@@ -32,7 +45,7 @@ function createSquares() {
   });
 
   gridSquares.forEach((square) => square.addEventListener("mouseenter", () => {
-    square.style.backgroundColor = "blue"
+    square.style.backgroundColor = randomColor();
   }));
 
 }
@@ -41,3 +54,5 @@ function createSquares() {
 sizeButton.addEventListener("click", getSize);
 
 createSquares();
+
+console.log(randomColor());
