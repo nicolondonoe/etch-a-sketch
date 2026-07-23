@@ -1,5 +1,6 @@
 const container = document.querySelector("div.container");
 let gridSquares = [];
+let borderSquares = [];
 let sizeButton = document.querySelector("button");
 let size = 16;
 const containerSize = container.offsetWidth;
@@ -20,16 +21,14 @@ function randomColor() {
     rgbArray[i] = Math.floor(Math.random()*255) + 1;
   }
 
-  // console.log(rgbArray);
-
   return "rgb("+rgbArray[0]+","+rgbArray[1]+","+rgbArray[2]+")";
 }
 
 function darkenSquare(square) {
   if (Number(square.style.opacity) < 1) {
     square.style.opacity = Number(square.style.opacity)+0.1;
-    console.log("increased 1 opacity");
-    console.log(square.style.opacity);
+    // console.log("increased 1 opacity");
+    // console.log(square.style.opacity);
   }
   else {
   }
@@ -38,33 +37,40 @@ function darkenSquare(square) {
 function createSquares() {
 
   // remove the previous squares for resizing
-  gridSquares.forEach((square) => container.removeChild(square));
+  document.querySelectorAll(".gridSquare").forEach((element) => element.remove);
+  borderSquares.forEach((square) => container.removeChild(square));
   gridSquares = [];
-
+  borderSquares = [];
 
   for (let i = 0; i < size**2; i++) {
     gridSquares[i] = document.createElement("div");
     gridSquares[i].classList.add("square");
+    borderSquares[i] = document.createElement("div");
+    borderSquares[i].classList.add("borderSquare");
+    borderSquares[i].appendChild(gridSquares[i]);
   }
 
-  gridSquares.forEach((square) => {
+  borderSquares.forEach((square) => {
     container.appendChild(square);
-    square.style.minWidth = (containerSize/size) + 'px';
-    square.style.minHeight = (containerSize/size) + 'px';
+    square.style.minWidth = ((containerSize/size)) + 'px';
+    square.style.minHeight = ((containerSize/size)) + 'px';
   });
 
+  gridSquares.forEach((square) => {
+    square.style.minWidth = (containerSize/size)-2 + 'px';
+    square.style.minHeight = (containerSize/size)-2 + 'px';
+  });
+
+  gridSquares.forEach((square) => square.addEventListener("mouseenter", () => {
+    square.style.backgroundColor = randomColor();
+    darkenSquare(square);
+  }));
+  
 }
-
-
 
 sizeButton.addEventListener("click", getSize);
 
 createSquares();
 
-gridSquares.forEach((square) => square.addEventListener("mouseenter", () => {
-  square.style.backgroundColor = randomColor();
-  darkenSquare(square);
-}));
 
 
-console.log(randomColor());

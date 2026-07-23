@@ -16,6 +16,15 @@ body {
 
 .square {
   box-sizing: border-box;
+  /* border: thin solid black; */
+  flex: 1 1;
+  display: flex;
+  /* justify-content: center; */
+  /* align-items: center; */
+}
+
+.borderSquare {
+  box-sizing: border-box;
   border: thin solid black;
   flex: 1 1;
 }
