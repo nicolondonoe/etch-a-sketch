@@ -18,7 +18,7 @@ function randomColor() {
   let rgbArray = [];
 
   for (let i = 0; i < 3; i++) {
-    rgbArray[i] = Math.floor(Math.random()*255) + 1;
+    rgbArray[i] = Math.floor(Math.random()*256);
   }
 
   return "rgb("+rgbArray[0]+","+rgbArray[1]+","+rgbArray[2]+")";
@@ -37,7 +37,7 @@ function darkenSquare(square) {
 function createSquares() {
 
   // remove the previous squares for resizing
-  document.querySelectorAll(".gridSquare").forEach((element) => element.remove);
+  document.querySelectorAll(".square").forEach((element) => element.remove());
   borderSquares.forEach((square) => container.removeChild(square));
   gridSquares = [];
   borderSquares = [];
