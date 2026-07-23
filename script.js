@@ -2,11 +2,7 @@ const container = document.querySelector("div.container");
 let gridSquares = [];
 let sizeButton = document.querySelector("button");
 let size = 16;
-let containerSize = container.offsetWidth;
-
-
-
-
+const containerSize = container.offsetWidth;
 
 function getSize() {
   size = prompt("Size of one side: ");
