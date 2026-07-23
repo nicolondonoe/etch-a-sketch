@@ -23,7 +23,16 @@ function randomColor() {
   // console.log(rgbArray);
 
   return "rgb("+rgbArray[0]+","+rgbArray[1]+","+rgbArray[2]+")";
+}
 
+function darkenSquare(square) {
+  if (Number(square.style.opacity) < 1) {
+    square.style.opacity = Number(square.style.opacity)+0.1;
+    console.log("increased 1 opacity");
+    console.log(square.style.opacity);
+  }
+  else {
+  }
 }
 
 function createSquares() {
@@ -44,15 +53,18 @@ function createSquares() {
     square.style.minHeight = (containerSize/size) + 'px';
   });
 
-  gridSquares.forEach((square) => square.addEventListener("mouseenter", () => {
-    square.style.backgroundColor = randomColor();
-  }));
-
 }
+
 
 
 sizeButton.addEventListener("click", getSize);
 
 createSquares();
+
+gridSquares.forEach((square) => square.addEventListener("mouseenter", () => {
+  square.style.backgroundColor = randomColor();
+  darkenSquare(square);
+}));
+
 
 console.log(randomColor());
